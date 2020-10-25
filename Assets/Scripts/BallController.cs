@@ -32,6 +32,7 @@ public class BallController : MonoBehaviour
                 Debug.Log("de, world!");
                 rb.velocity = new Vector3(speed,0,0);
                 started = true;
+                GameManager.instance.StartGame();
             }
         }
 
@@ -39,21 +40,20 @@ public class BallController : MonoBehaviour
             gameOver = true;
             rb.velocity = new Vector3(0,-25f,0);
             Camera.main.GetComponent<CameraFollow>().gameOver = true;
+
+            GameManager.instance.GameOver();
         }
 
         if(Input.GetMouseButtonDown(0) && !gameOver){
             SwitchDirection();
-            Debug.Log("Pressed primary button.");
         }
     }
 
     void SwitchDirection(){
         if(rb.velocity.z >0){
             rb.velocity = new Vector3(speed,0,0);
-            Debug.Log("ZZZZZZZZZZZZZZZZZz");
         }else if(rb.velocity.x > 0){
             rb.velocity = new Vector3(0,0,speed);
-            Debug.Log("XXXXXXXXXXXXXXXXx");
         }
 
     }
