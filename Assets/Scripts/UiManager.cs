@@ -23,7 +23,7 @@ public class UiManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        highScore1.text = "ベストスコア: " + PlayerPrefs.GetInt("highScore").ToString();
     }
 
     public void GameStart(){
@@ -31,6 +31,8 @@ public class UiManager : MonoBehaviour
         zigzagPanel.GetComponent<Animator>().Play("panelUp");
     }
     public void GameOver(){
+        score.text = PlayerPrefs.GetInt("score").ToString();
+        highScore2.text = PlayerPrefs.GetInt("highScore").ToString();
         gameOverPanel.SetActive(true);
     }
 
